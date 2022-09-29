@@ -10,10 +10,20 @@
   display: flex;
   justify-content: space-around;
 }
+.center {
+  text-align: center;
+}
 
-.hero {
-  margin-top: 24px;
-  background-color: rgb(39, 162, 202);
-  padding: 4px;
-  text-align: left;
+.car-card-mini {
+  width: 300px;
+}
+
+.car-card-medium {
+  width: 500px;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  border-radius: 100px;
 }
