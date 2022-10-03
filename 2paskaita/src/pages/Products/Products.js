@@ -41,7 +41,8 @@ const Products = () => {
     }
   };
 
-  const handleAddTodo = () => {
+  const handleAddTodo = (e) => {
+    e.preventDefault();
     if (todoText.length >= 1) {
       setTodos([...todos, todoText]);
       setTodoText("");
@@ -109,15 +110,16 @@ const Products = () => {
 
       <div>
         <div className="todo-list">
-          <input
-            type="text"
-            className="todo-input"
-            value={todoText}
-            onChange={(e) => setTodoText(e.target.value)}
-          />
-          <CustomButton variant="contained" onClick={handleAddTodo}>
-            Add todo
-          </CustomButton>
+          {todos.length} Todos
+          <form onSubmit={handleAddTodo}>
+            <input
+              type="text"
+              className="todo-input"
+              value={todoText}
+              onChange={(e) => setTodoText(e.target.value)}
+            />
+            <CustomButton variant="contained">Add todo</CustomButton>
+          </form>
           <ul>
             {todos.map((todo, index) => (
               <li key={index}>
@@ -141,14 +143,12 @@ const Products = () => {
               style={{ backgroundColor: color, width: 50, height: 50 }}
             />
           ))}
-
           <br />
           <br />
           <div
             style={{ backgroundColor: "black", width: boxWidth, height: 50 }}
           />
           <br />
-
           <button onClick={handleIncreaseBoxSize}> Increase box size</button>
           <div
             style={{
