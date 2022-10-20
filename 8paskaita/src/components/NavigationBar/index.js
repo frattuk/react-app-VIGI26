@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { NightModeContext } from "../../contexts/NightModeProvider";
+import { LangModeContext } from "../../contexts/LangModeProvider";
 
 const Container = styled.div`
   padding: 20px 60px;
@@ -25,14 +28,45 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const RightContainer = styled.div`
+  display: flex;
+  color: gray;
+  &:hover {
+    color: black;
+  }
+`;
+const ModeContainer = styled.div`
+  padding: 0 12px;
+  color: gray;
+  &:hover {
+    color: black;
+  }
+`;
+
 const NavigationBar = () => {
+  const { isNightMode, toggleMode } = useContext(NightModeContext);
+  const { isLangLit, toggleLit } = useContext(LangModeContext);
+
+  console.log(isNightMode);
   return (
-    <Container>
+    <Container style={{ background: isNightMode ? "#3e281" : "#ffffff" }}>
       <Logo>vetbee</Logo>
-      <nav>
-        <StyledLink to="/">Pets</StyledLink>
-        <StyledLink to="/medications">Medications</StyledLink>
-      </nav>
+      <RightContainer>
+        <nav>
+          <StyledLink to="/">Pets</StyledLink>
+          <StyledLink to="/medications">Medications</StyledLink>
+        </nav>
+
+        <div
+          onClick={toggleMode}
+          style={{ color: isNightMode ? "#ffffff" : "#000000" }}
+        >
+          {isNightMode ? "Night" : "Day"}
+        </div>
+        <ModeContainer>
+          <div onClick={toggleLit}>{isLangLit ? "LT" : "EN"}</div>
+        </ModeContainer>
+      </RightContainer>
     </Container>
   );
 };
