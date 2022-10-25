@@ -49,7 +49,7 @@ const NavigationBar = () => {
 
   console.log(isNightMode);
   return (
-    <Container style={{ background: isNightMode ? "#3e281" : "#ffffff" }}>
+    <Container style={{ background: isNightMode ? "#3e2801" : "#ffffff" }}>
       <Logo>vetbee</Logo>
       <RightContainer>
         <nav>
